@@ -62,10 +62,12 @@ export const buttons = {
     },
     link: {
       backgroundColor: 'transparent',
-      borderWidth: 0,
+      borderWidth: 1,
+      borderColor: '#444',
       textStyles: {
         letterSpacing: 0,
-        fontWeight: 'normal'
+        fontWeight: 'normal',
+        fontSize: fonts['Body'].fontSize
       }
     }
   }
@@ -73,8 +75,8 @@ export const buttons = {
 
 const getTextStyles = (type: string, size: string) =>
   Object.assign({},
-    _.get(buttons, `types.${type}.textStyles`),
-    _.get(buttons, `sizes.${size}.textStyles`)
+    _.get(buttons, `sizes.${size}.textStyles`),
+    _.get(buttons, `types.${type}.textStyles`)
   );
 
 const Button = ({ name, type, size, style }: {
@@ -100,7 +102,6 @@ const Button = ({ name, type, size, style }: {
         
       <Text style={{
         ...fonts['SC'],
-        borderWidth: 0,
         ...getTextStyles(type, size)
       }}>
         {type === 'link' ? name : name.toUpperCase() }

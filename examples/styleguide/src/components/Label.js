@@ -3,6 +3,11 @@ import chromajs from 'chroma-js';
 import { colors, spacing } from '../designSystem';
 import { View, Text, StyleSheet } from 'react-sketchapp';
 
+// To-do
+// Revise these colors
+// Revise sizing of fonts / labels
+// Revise types of labels
+
 const styles = {
   label: {
     borderRadius: 3,

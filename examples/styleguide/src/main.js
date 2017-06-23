@@ -70,7 +70,7 @@ const Document = ({ system }: { system: DesignSystem }) => (
         items={['Link 1', 'Link 2']} 
         appendButtons={{
           'Sign Up': {
-            type: 'Success'
+            type: 'success'
           }
         }}
         login={false}

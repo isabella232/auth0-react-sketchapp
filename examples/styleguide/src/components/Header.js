@@ -107,7 +107,7 @@ const Header = ({ subtitle, items, appendButtons, mode, bgColor, login }: P) => 
         
 
         {Object.keys(appendButtons || {}).map(button => (
-          <Button style={styles.appendedButton} type={appendButtons[button].type || 'Link'} size="Micro" name={button || 'Talk to Sales'} invert={(mode === 'dark') ? true : false} />
+          <Button style={styles.appendedButton} type={appendButtons[button].type || 'link'} size="micro" name={button || 'Talk to Sales'} invert={(mode === 'dark') ? true : false} />
         ))}
       </View>
 
@@ -115,7 +115,7 @@ const Header = ({ subtitle, items, appendButtons, mode, bgColor, login }: P) => 
       {login ? 
         <View name='nav' style={styles.nav}>
           <Text name='nav-item' style={[styles.navItem, {color: (mode === 'dark') ? 'white' : 'black'}]}>Log In</Text>
-          <Button type="Success" size="Micro" name="Sign Up" />
+          <Button type="success" size="micro" name="Sign Up" />
         </View>
       : null}
       
@@ -127,7 +127,7 @@ Header.defaultProps = {
   items: ['Platform', 'Solutions', 'Why Auth0', 'Developers', 'Pricing'],
   appendButtons: {
     'Talk to Sales': {
-      type: 'Link'
+      type: 'link'
     }
   },
   login: true
