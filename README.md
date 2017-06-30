@@ -14,7 +14,7 @@ First, make sure you have installed [Sketch](http://sketchapp.com) version 43+, 
 Open a new Sketch file, then in a terminal:
 ```bash
 git clone https://github.com/auth0/auth0-react-sketchapp
-cd react-sketchapp/examples/styleguide && npm install
+cd examples/styleguide && npm install
 
 npm run render
 ```
