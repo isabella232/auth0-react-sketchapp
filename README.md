@@ -13,15 +13,15 @@ First, make sure you have installed [Sketch](http://sketchapp.com) version 43+, 
 
 Open a new Sketch file, then in a terminal:
 ```bash
-git clone https://github.com/airbnb/react-sketchapp.git
-cd react-sketchapp/examples/basic-setup && npm install
+git clone https://github.com/auth0/auth0-react-sketchapp
+cd react-sketchapp/examples/styleguide && npm install
 
 npm run render
 ```
 
 Next, <a href="https://github.com/airbnb/react-sketchapp/tree/master/examples">check out some more examples!</a>
 
-![readme-intro](https://cloud.githubusercontent.com/assets/591643/24777148/e742cd0e-1ad8-11e7-8751-090f6b2db514.png)
+![Styleguide screenshot](https://user-images.githubusercontent.com/6318057/27739393-c892e4c2-5d84-11e7-841a-4351aa388fac.png)
 
 [![npm](https://img.shields.io/npm/v/react-sketchapp.svg)](https://www.npmjs.com/package/react-sketchapp)
 ![Sketch.app](https://img.shields.io/badge/Sketch.app-43--45-brightgreen.svg)
