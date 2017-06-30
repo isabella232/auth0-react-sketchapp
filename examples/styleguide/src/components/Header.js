@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
 });
 
 const Header = ({ subtitle, items, appendButtons, mode, bgColor, login }: P) => (
-  <View name='header' style={[ styles.header, { backgroundColor: bgColor || colors['BG Light'] } ]}>
+  <View name='header' style={{...StyleSheet.flatten(styles.header), ...{ backgroundColor: bgColor || colors['BG Light']} }}>
     <View name='container' style={styles.container}>
       <View name='brand' style={styles.brand}>
         
@@ -89,7 +89,7 @@ const Header = ({ subtitle, items, appendButtons, mode, bgColor, login }: P) => 
       <View name='nav' style={styles.nav}>
         {items.map(item => (
           <View style={styles.dropDownItem}>
-            <Text key={item} name='nav-item' style={[styles.navItem, {color: (mode === 'dark') ? 'white' : 'black'}]}>{item}</Text>
+            <Text key={item} name='nav-item' style={ {...StyleSheet.flatten(styles.navItem), ...{color: (mode === 'dark') ? 'white' : 'black'}} }>{item}</Text>
             
             {(dropdownItems.includes(item)) ?
               <Image name='chevron' style={styles.chevron}
@@ -114,7 +114,9 @@ const Header = ({ subtitle, items, appendButtons, mode, bgColor, login }: P) => 
       
       {login ? 
         <View name='nav' style={styles.nav}>
-          <Text name='nav-item' style={[styles.navItem, {color: (mode === 'dark') ? 'white' : 'black'}]}>Log In</Text>
+          <Text 
+            name='nav-item' 
+            style={ {...StyleSheet.flatten(styles.navItem), ...{color: (mode === 'dark') ? 'white' : 'black'}} }>Log In</Text>
           <Button type="success" size="micro" name="Sign Up" />
         </View>
       : null}

@@ -73,18 +73,21 @@ export const buttons = {
   }
 }
 
+const resolveInvert = (invert) =>
+  invert ? { color: 'white' } : {};
+
 const getTextStyles = (type: string, size: string) =>
   Object.assign({},
     _.get(buttons, `sizes.${size}.textStyles`),
     _.get(buttons, `types.${type}.textStyles`)
   );
 
-const Button = ({ name, type, size, style }: {
+const Button = ({ name, type, size, invert, style }: {
   name: string,
   type: 'success' | 'primary' | 'disabled' | 'transparent' | 'link',
   size: 'large' | 'medium' | 'small' | 'micro'
 }) =>
-  <View style={[{
+  <View style={{
     borderRadius: 3,
     flexDirection: 'row',
     alignItems: 'center',
@@ -92,8 +95,9 @@ const Button = ({ name, type, size, style }: {
     paddingRight: spacing,
     letterSpacing: 1,
     ...buttons.types[type],
-    ...buttons.sizes[size]
-  }, style]}>
+    ...buttons.sizes[size],
+    ...StyleSheet.flatten(style)
+  }}>
     <View style={{
         marginTop: (size === 'micro') ? -5 : -8,
         flexDirection: 'row',
@@ -102,7 +106,8 @@ const Button = ({ name, type, size, style }: {
         
       <Text style={{
         ...fonts['SC'],
-        ...getTextStyles(type, size)
+        ...getTextStyles(type, size),
+        ...resolveInvert(invert)
       }}>
         {type === 'link' ? name : name.toUpperCase() }
       </Text>
