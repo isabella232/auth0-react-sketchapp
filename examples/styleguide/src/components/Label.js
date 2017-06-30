@@ -1,5 +1,5 @@
+/* @flow */
 import React, { Element } from 'react';
-import chromajs from 'chroma-js';
 import styled from 'styled-components/primitives';
 import { colors, spacing } from '../designSystem';
 import { View, Text, StyleSheet } from 'react-sketchapp';
@@ -9,7 +9,7 @@ import { View, Text, StyleSheet } from 'react-sketchapp';
 // Revise sizing of fonts / labels
 // Revise types of labels
 
-const labelStyles = [
+const labelStyles: Array<Array<string>> = [
   ['default', '#777'],
   ['primary', colors['Light Blue']],
   ['success', colors.Red],
