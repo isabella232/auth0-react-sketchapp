@@ -31,24 +31,24 @@ const alertStyles = {
 const AlertView = styled.View`
   border-radius: 3px;
   display: block;
-  padding: ${spacing};
+  padding: ${`${spacing}px`};
   margin-bottom: ${spacing};
-  background-color: ${props => alertStyles[props.type].backgroundColor}
+  background-color: ${props => _.get(alertStyles, [props.type, 'backgroundColor'], '')}
 `;
 
 const AlertText = styled.Text`
-  color: ${props => alertStlyes[prop.type].color}
+  color: ${props => _.get(alertStyles, [props.type, 'color'], '')}
 `;
 
 const Alert = ({ children, type }: {
   children: Element<*>,
-  type: 'default' | 'success' | 'info' | 'warning' | 'danger'
+  type: $Keys<typeof alertStyles>
 }) =>
-  <AlertView>
-    <AlertText>
+  <AlertView type={type}>
+    <AlertText type={type}>
       {children}
     </AlertText>
-  </View>;
+  </AlertView>;
 
 Alert.defaultProps = {
   type: 'default'
