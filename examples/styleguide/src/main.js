@@ -9,7 +9,7 @@ import type { DesignSystem } from './designSystem';
 import SectionTitle from './components/SectionTitle';
 import Header from './components/Header';
 import Palette from './components/Palette';
-import { buttons } from './components/Button';
+import { buttonSizes, buttonStyles } from './components/Button';
 import ButtonSample from './components/ButtonSample';
 import Section from './components/Section';
 import TypeSpecimen from './components/TypeSpecimen';
@@ -52,7 +52,7 @@ const Document = ({ system }: { system: DesignSystem }) => (
         flexWrap: 'wrap',
         flexDirection: 'row'
       }}>
-      {Object.keys(buttons.types).map(type => (
+      {Object.keys(buttonStyles).map(type => (
         <ButtonSample key={type} type={type}/>
       ))}
       </View>

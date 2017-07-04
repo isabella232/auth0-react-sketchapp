@@ -1,13 +1,16 @@
 /* @flow */
 import React from 'react';
+import { View, StyleSheet, Image, Text } from 'react-sketchapp';
+import styled from 'styled-components/primitives';
 import _ from 'lodash';
-import { View, StyleSheet, Image } from 'react-sketchapp';
-import { fonts, spacing, colors } from '../designSystem';
-import { Text } from 'react-sketchapp';
 import type { Color } from '../processColor';
+import { fonts, spacing, colors } from '../designSystem';
 
-//To-do
-//With image/icon
+const getTextStyles = (type: string, size: string) =>
+  Object.assign({},
+    _.get(buttonSizes, `${size}.textStyles`),
+    _.get(buttonStyles, `${type}.textStyles`)
+  );
 
 const styles = StyleSheet.create({
   image: {
@@ -18,101 +21,97 @@ const styles = StyleSheet.create({
   }
 });
 
-export const buttons = {
-  sizes: {
-    large: {
-      height: spacing * 4
-    },
-    medium: {
-      height: spacing * 3
-    },
-    small: {
-      height: spacing * 2.5
-    },
-    micro: {
-      height: spacing * 2,
-      textStyles: {
-        fontSize: 11
-      }
-    }
+export const buttonSizes = {
+  large: {
+    height: spacing * 4,
+    paddingBottom: 2
   },
-  types: {
-    success: {
-      backgroundColor: colors.Red,
-      textStyles: {
-        color: 'white'
-      }
-    },
-    primary: {
-      backgroundColor: colors['Light Blue'],
-      textStyles: {
-        color: 'white'
-      }
-    },
-    disabled: {
-      backgroundColor: '#CCCCCC',
-      textStyles: {
-        color: 'rgba(0,0,0,.26)'
-      }
-    },
-    transparent: {
-      backgroundColor: 'transparent',
-      borderWidth: 1,
-      borderColor: '#444'
-    },
-    link: {
-      backgroundColor: 'transparent',
-      borderWidth: 1,
-      borderColor: '#444',
-      textStyles: {
-        letterSpacing: 0,
-        fontWeight: 'normal',
-        fontSize: fonts['Body'].fontSize
-      }
+  medium: {
+    height: spacing * 3,
+    paddingBottom: 4
+  },
+  small: {
+    height: spacing * 2.5,
+    paddingBottom: 4
+  },
+  micro: {
+    height: spacing * 2,
+    paddingBottom: 4,
+    textStyles: {
+      fontSize: 11
     }
   }
-}
+};
 
-const resolveInvert = (invert) =>
-  invert ? { color: 'white' } : {};
+export const buttonStyles = {
+  success: {
+    backgroundColor: colors.Red,
+    textStyles: {
+      color: 'white'
+    }
+  },
+  primary: {
+    backgroundColor: colors['Light Blue'],
+    textStyles: {
+      color: 'white'
+    }
+  },
+  disabled: {
+    backgroundColor: '#CCCCCC',
+    textStyles: {
+      color: 'rgba(0,0,0,.26)'
+    }
+  },
+  transparent: {
+    backgroundColor: 'transparent',
+    borderWidth: 1,
+    borderColor: '#444',
+  },
+  link: {
+    backgroundColor: 'transparent',
+    borderWidth: 1,
+    borderColor: '#444',
+    textStyles: {
+      letterSpacing: 0,
+      fontWeight: 'normal',
+      fontSize: fonts['Body'].fontSize
+    }
+  }
+};
 
-const getTextStyles = (type: string, size: string) =>
-  Object.assign({},
-    _.get(buttons, `sizes.${size}.textStyles`),
-    _.get(buttons, `types.${type}.textStyles`)
-  );
+const ButtonView = styled.View`
+  border-radius: 3px;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 ${spacing}px;
+  letter-spacing: 1px;
+`;
+
+const ButtonText = styled.Text`
+  color: ${props => props.invert ? 'white' : ''},
+`;
 
 const Button = ({ name, type, size, invert, style }: {
   name: string,
-  type: 'success' | 'primary' | 'disabled' | 'transparent' | 'link',
-  size: 'large' | 'medium' | 'small' | 'micro'
+  type: $Keys<typeof buttonStyles>,
+  size: $Keys<typeof buttonSizes>,
+  invert?: boolean
 }) =>
-  <View style={{
-    borderRadius: 3,
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingLeft: spacing,
-    paddingRight: spacing,
-    letterSpacing: 1,
-    ...buttons.types[type],
-    ...buttons.sizes[size],
+  <ButtonView style={{
+    ...buttonStyles[type],
+    ...buttonSizes[size],
     ...StyleSheet.flatten(style)
   }}>
-    <View style={{
-        marginTop: (size === 'micro') ? -5 : -8,
-        flexDirection: 'row',
-        alignItems: 'center'
-      }}>
-        
-      <Text style={{
-        ...fonts['SC'],
-        ...getTextStyles(type, size),
-        ...resolveInvert(invert)
-      }}>
-        {type === 'link' ? name : name.toUpperCase() }
-      </Text>
-    </View>
-  </View>;
+    <ButtonText
+      invert={invert}
+      style={{
+        ...fonts.SC,
+        ...getTextStyles(type, size)
+      }}
+    >
+      {type === 'link' ? name : name.toUpperCase() }
+    </ButtonText>
+  </ButtonView>;
 
 Button.defaultProps = {
   type: 'success',
