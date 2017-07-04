@@ -41,7 +41,7 @@ const AlertText = styled.Text`
 `;
 
 const Alert = ({ children, type }: {
-  children: Element<*>,
+  children?: Element<*>,
   type: $Keys<typeof alertStyles>
 }) =>
   <AlertView type={type}>

@@ -1,6 +1,7 @@
 /* @flow */
 import React, { Element } from 'react';
 import styled from 'styled-components/primitives';
+import _ from 'lodash';
 import { colors, spacing } from '../designSystem';
 import { View, Text, StyleSheet } from 'react-sketchapp';
 
@@ -38,7 +39,7 @@ const LabelText = styled.Text`
 `;
 
 const Label = ({ children, type } : {
-  children: Element<*>,
+  children?: Element<*>,
   type: 'default' | 'primary' | 'success' | 'info' | 'warning' | 'danger'
 }) =>
   <LabelView type={type}>
