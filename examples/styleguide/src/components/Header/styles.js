@@ -1,6 +1,5 @@
-import { fonts, colors, spacing } from '../../designSystem';
-import { View, StyleSheet, Text, Image } from 'react-sketchapp';
 import styled from 'styled-components/primitives';
+import { colors, spacing } from '../../designSystem';
 
 export const HeaderView = styled.View`
   width: 1400px;

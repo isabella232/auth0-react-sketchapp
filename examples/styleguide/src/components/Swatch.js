@@ -1,12 +1,10 @@
 /* @flow */
 import React from 'react';
-import { View } from 'react-sketchapp';
-import AccessibilityBadge from './AccessibilityBadge';
-import designSystem from '../designSystem';
-import SectionTitle from './SectionTitle';
-import { Text } from 'react-sketchapp';
-import type { Color } from '../processColor';
+import { View, Text } from 'react-sketchapp';
 import chroma from 'chroma-js';
+import AccessibilityBadge from './AccessibilityBadge';
+import { fonts } from '../designSystem';
+import type { Color } from '../processColor';
 
 const SWATCH_WIDTH = 150;
 
@@ -47,20 +45,20 @@ const Swatch = ({ color, name }: P) => (
         }}
       >
         <Text style={{
-          ...designSystem.fonts['SC'],
+          ...fonts.SC,
           letterSpacing: 0,
           color: textColor(color.hex)
-        }}>{name}</Text>
+        }}
+        >{name}</Text>
         <Text style={{
-          ...designSystem.fonts['SC'],
+          ...fonts.SC,
           fontWeight: 'normal',
           letterSpacing: 0,
           color: textColor(color.hex)
-        }}>{color.hex}</Text>
+        }}
+        >{color.hex}</Text>
 
       </View>
-
-
     </View>
     <AccessibilityBadge level={color.accessibility} />
 

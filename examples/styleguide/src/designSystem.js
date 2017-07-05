@@ -25,12 +25,12 @@ export const spacing = 16;
 
 export const fontFamilies = {
   display: 'Fakt Pro',
-  body: 'Fakt Pro',
+  body: 'Fakt Pro'
 };
 
 const fontWeights = {
   regular: 'normal',
-  bold: '500',
+  bold: '500'
 };
 
 export const fonts = {
@@ -39,28 +39,28 @@ export const fonts = {
     fontSize: typeSizes[0],
     fontFamily: fontFamilies.display,
     fontWeight: fontWeights.bold,
-    lineHeight: 80,
+    lineHeight: 80
   },
   'Title 1': {
     color: colors.Base,
     fontSize: typeSizes[2],
     fontFamily: fontFamilies.display,
     fontWeight: fontWeights.bold,
-    lineHeight: 48,
+    lineHeight: 48
   },
   'Title 2': {
     color: colors.Base,
     fontSize: typeSizes[3],
     fontFamily: fontFamilies.display,
     fontWeight: fontWeights.bold,
-    lineHeight: 36,
+    lineHeight: 36
   },
   'Title 3': {
     color: colors.Base,
     fontSize: typeSizes[4],
     fontFamily: fontFamilies.body,
     fontWeight: fontWeights.bold,
-    lineHeight: 24,
+    lineHeight: 24
   },
   Body: {
     color: colors.Base,
@@ -68,7 +68,7 @@ export const fonts = {
     fontFamily: fontFamilies.body,
     fontWeight: fontWeights.regular,
     lineHeight: 24,
-    marginBottom: 24,
+    marginBottom: 24
   },
   SC: {
     color: colors.Base,
@@ -77,19 +77,19 @@ export const fonts = {
     fontWeight: fontWeights.bold,
     letterSpacing: 1,
     lineHeight: 20
-  },
+  }
 };
 
 export default {
   colors: Object.keys(colors).reduce(
     (acc, name) => ({
       ...acc,
-      [name]: processColor(colors[name]),
+      [name]: processColor(colors[name])
     }),
     {},
   ),
   fonts,
-  spacing,
+  spacing
 };
 
 export type DesignSystem = {

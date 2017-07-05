@@ -1,11 +1,9 @@
 /* @flow */
 import React, { Element } from 'react';
 import styled from 'styled-components/primitives';
-import _ from 'lodash';
 import { colors, spacing } from '../designSystem';
-import { View, Text, StyleSheet } from 'react-sketchapp';
 
-// To-do
+// ✅ To-do
 // Revise these colors
 // Revise sizing of fonts / labels
 // Revise types of labels
@@ -14,9 +12,9 @@ const labelStyles: Array<Array<string>> = [
   ['default', '#777'],
   ['primary', colors['Light Blue']],
   ['success', colors.Red],
-  ['info', "#5bc0de"],
-  ['warning', "#f0ad4e"],
-  ['danger', "#d9534f"]
+  ['info', '#5bc0de'],
+  ['warning', '#f0ad4e'],
+  ['danger', '#d9534f']
 ];
 
 const getLabelColor = (style: string) =>
@@ -38,7 +36,7 @@ const LabelText = styled.Text`
   color: ${props => getLabelColor(props.type)};
 `;
 
-const Label = ({ children, type } : {
+const Label = ({ children, type }: {
   children?: Element<*>,
   type: 'default' | 'primary' | 'success' | 'info' | 'warning' | 'danger'
 }) =>
@@ -49,7 +47,8 @@ const Label = ({ children, type } : {
   </LabelView>;
 
 Label.defaultProps = {
-  type: 'default'
+  type: 'default',
+  children: undefined
 };
 
 export default Label;

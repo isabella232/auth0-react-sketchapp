@@ -5,6 +5,7 @@ import SectionTitle from './SectionTitle';
 
 type P = {
   title: string,
+  description: string,
   children?: any,
 };
 const Section = ({ title, description, children }: P) => (
@@ -18,5 +19,9 @@ const Section = ({ title, description, children }: P) => (
     </View>
   </View>
 );
+
+Section.defaultProps = {
+  children: undefined
+};
 
 export default Section;

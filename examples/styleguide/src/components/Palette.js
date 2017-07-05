@@ -13,7 +13,7 @@ const Palette = ({ colors }: P) => (
     style={{
       width: (SWATCH_WIDTH + 48) * 4,
       flexWrap: 'wrap',
-      flexDirection: 'row',
+      flexDirection: 'row'
     }}
   >
     {Object.keys(colors).map(name =>

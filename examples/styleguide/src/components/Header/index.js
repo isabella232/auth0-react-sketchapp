@@ -1,8 +1,6 @@
 /* @flow */
 import React from 'react';
-import { View, StyleSheet, Text, Image } from 'react-sketchapp';
-import { fonts, colors, spacing } from '../../designSystem';
-import styled from 'styled-components/primitives';
+import { fonts, spacing } from '../../designSystem';
 import {
   HeaderView, Container, BrandView, Logo, Subtitle,
   NavView, NavItem, DropdownItem, ChevronImage
@@ -18,35 +16,49 @@ const LogoBlueURL = 'https://cdn.auth0.com/styleguide/latest/img/logo-blue.png';
 const chevronWhiteURL = 'https://cdn.auth0.com/website/sg-assets/chevron-white.png';
 const chevronBlackURL = 'https://cdn.auth0.com/website/sg-assets/chevron.png';
 
-const Brand = ({ mode, subtitle }) =>
+type HeaderItems = Array<{
+  name: string,
+  dropdown?: boolean
+}>;
+
+type HeaderType = {
+  subtitle: string,
+  items: HeaderItems,
+  appendButtons: {},
+  mode: string,
+  bgColor: string,
+  login: boolean
+};
+
+const Brand = ({ mode, subtitle }: HeaderType) =>
   <BrandView>
     <Logo
-      source={(mode === 'dark') ? LogoGreyURL : LogoBlueURL }
-      resizeMode='contain'
+      source={(mode === 'dark') ? LogoGreyURL : LogoBlueURL}
+      resizeMode="contain"
     />
     { subtitle &&
-      <Subtitle style={{ ...fonts['SC'] }}>
+      <Subtitle style={{ ...fonts.SC }}>
         { subtitle.toUpperCase() }
       </Subtitle>
     }
   </BrandView>;
 
-const Nav = ({ mode, items, appendButtons }) =>
+const Nav = ({ mode, items, appendButtons }: HeaderType) =>
   <NavView>
     { items.map(item =>
       <DropdownItem>
         <NavItem
           key={item}
-          name='nav-item'
+          name="nav-item"
           style={{ color: (mode === 'dark') ? 'white' : 'black' }}
         >
           {item.name}
         </NavItem>
-        
+
         { item.dropdown &&
           <ChevronImage
-            source={ (mode === 'dark') ? chevronWhiteURL : chevronBlackURL }
-            resizeMode='contain'
+            source={(mode === 'dark') ? chevronWhiteURL : chevronBlackURL}
+            resizeMode="contain"
           />
         }
       </DropdownItem>
@@ -61,12 +73,12 @@ const Nav = ({ mode, items, appendButtons }) =>
         invert={mode === 'dark'}
       />
     ))}
-  </NavView>
+  </NavView>;
 
-const Login = ({ mode }) => 
+const Login = ({ mode }: HeaderType) =>
   <NavView>
     <NavItem
-      name='nav-item' 
+      name="nav-item"
       style={{
         color: mode === 'dark' ? 'white' : 'black'
       }}
@@ -76,11 +88,11 @@ const Login = ({ mode }) =>
     <Button type="success" size="micro" name="Sign Up" />
   </NavView>;
 
-const Header = ({ subtitle, items, appendButtons, mode, bgColor, login }: any) => (
+const Header = ({ subtitle, items, appendButtons, mode, bgColor, login }: HeaderType) => (
   <HeaderView bgColor={bgColor}>
     <Container>
       <Brand mode={mode} subtitle={subtitle} />
-      <Nav mode={mode} items={items} appendButtons={appendButtons}/>
+      <Nav mode={mode} items={items} appendButtons={appendButtons} />
       {login && <Login mode={mode} />}
     </Container>
   </HeaderView>
@@ -88,25 +100,11 @@ const Header = ({ subtitle, items, appendButtons, mode, bgColor, login }: any) =
 
 Header.defaultProps = {
   items: [
-    {
-      name: 'Platform',
-      dropdown: true
-    },
-    {
-      name: 'Solutions',
-      dropdown: true
-    },
-    {
-      name: 'Why Auth0',
-      dropdown: true
-    },
-    {
-      name: 'Developers',
-      dropdown: true
-    },
-    {
-      name: 'Pricing'
-    }
+    { name: 'Platform', dropdown: true },
+    { name: 'Solutions', dropdown: true },
+    { name: 'Why Auth0', dropdown: true },
+    { name: 'Developers', dropdown: true },
+    { name: 'Pricing' }
   ],
   appendButtons: {
     'Talk to Sales': {

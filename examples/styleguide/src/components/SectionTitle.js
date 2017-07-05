@@ -1,23 +1,30 @@
 /* @flow */
 import React from 'react';
-import designSystem from '../designSystem';
 import { Text } from 'react-sketchapp';
+import { fonts } from '../designSystem';
+import type { Color } from '../processColor';
 
 type P = {
   bold?: boolean,
-  children?: any,
+  color: Color,
+  children?: any
 };
 const SectionTitle = ({ bold, color, children }: P) => (
   <Text
     style={{
-      ...designSystem.fonts.Body,
+      ...fonts.Body,
       fontWeight: bold ? '500' : 'normal',
       marginBottom: 0,
-      color: color
+      color
     }}
   >
     {children}
   </Text>
 );
+
+SectionTitle.defaultProps = {
+  bold: false,
+  children: undefined
+};
 
 export default SectionTitle;

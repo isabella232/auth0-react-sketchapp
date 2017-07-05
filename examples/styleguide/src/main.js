@@ -1,15 +1,14 @@
 /* @flow */
 /* eslint-disable react/jsx-filename-extension, import/no-named-as-default-member */
-
 import React from 'react';
+import _ from 'lodash';
 import { Artboard, render, TextStyles, View } from 'react-sketchapp';
 import designSystem from './designSystem';
 import type { DesignSystem } from './designSystem';
-
 import SectionTitle from './components/SectionTitle';
 import Header from './components/Header';
 import Palette from './components/Palette';
-import { buttonSizes, buttonStyles } from './components/Button';
+import { buttonStyles } from './components/Button';
 import ButtonSample from './components/ButtonSample';
 import Section from './components/Section';
 import TypeSpecimen from './components/TypeSpecimen';
@@ -27,7 +26,7 @@ import Label from './components/Label';
 // Forms
 
 const Document = ({ system }: { system: DesignSystem }) => (
-  <Artboard name="Basics" style={{padding: 100}}>
+  <Artboard name="Basics" style={{ padding: 100 }}>
     <View name="Intro" style={{ width: 420, marginBottom: system.spacing * 8, fontFamily: 'Fakt Pro' }}>
       <SectionTitle>
         Hola Juli This is an example react-sketchapp document, showing how to
@@ -51,26 +50,24 @@ const Document = ({ system }: { system: DesignSystem }) => (
         width: 600,
         flexWrap: 'wrap',
         flexDirection: 'row'
-      }}>
-      {Object.keys(buttonStyles).map(type => (
-        <ButtonSample key={type} type={type}/>
-      ))}
+      }}
+      >
+        {Object.keys(buttonStyles).map(type => (
+          <ButtonSample key={type} type={type} />
+        ))}
       </View>
     </Section>
 
     <Section title="Header" description="Possible types of configurations for the Auth0 Header">
       <Header />
-
       <Header mode="dark" bgColor={system.colors['BG Dark'].hex} />
-      
-      <Header subtitle="docs" bgColor='rgba(0,0,0,0.1)' />
-      
-      <Header 
+      <Header subtitle="docs" bgColor="rgba(0,0,0,0.1)" />
+      <Header
         subtitle="Status"
         items={[
           { name: 'Link 1' },
-          { name: 'Link 2' },
-        ]} 
+          { name: 'Link 2' }
+        ]}
         appendButtons={{
           'Sign Up': {
             type: 'success'
@@ -103,10 +100,10 @@ export default (context: any) => {
   TextStyles.create(
     {
       context,
-      clearExistingStyles: true,
+      clearExistingStyles: true
     },
     designSystem.fonts,
   );
 
   render(<Document system={designSystem} />, context.document.currentPage());
-}
+};

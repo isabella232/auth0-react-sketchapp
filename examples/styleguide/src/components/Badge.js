@@ -1,15 +1,15 @@
 /* @flow */
 import React from 'react';
-import designSystem from '../designSystem';
 import { View, Text } from 'react-sketchapp';
+import { fonts } from '../designSystem';
 
-type P = {
+type BadgeTypes = {
   filled?: boolean,
   children?: React$Element<any>,
+  color: string
 };
 
-
-const Badge = ({ children, filled, color }: P) => (
+const Badge = ({ children, filled, color }: BadgeTypes) => (
   <View
     style={{
       borderRadius: 3,
@@ -24,14 +24,19 @@ const Badge = ({ children, filled, color }: P) => (
   >
     <Text
       style={{
-        ...designSystem.fonts['SC'],
+        ...fonts.SC,
         marginTop: -3,
-        color: color
+        color
       }}
     >
       {children.toUpperCase()}
     </Text>
   </View>
 );
+
+Badge.defaultProps = {
+  filled: false,
+  children: undefined
+};
 
 export default Badge;

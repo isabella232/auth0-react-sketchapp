@@ -4,7 +4,6 @@ import chromajs from 'chroma-js';
 import styled from 'styled-components/primitives';
 import _ from 'lodash';
 import { colors, spacing } from '../designSystem';
-import { View, Text, StyleSheet } from 'react-sketchapp';
 
 const alertStyles = {
   default: {
@@ -19,8 +18,8 @@ const alertStyles = {
     color: chromajs(colors['Light Blue']).darken(2)
   },
   warning: {
-    backgroundColor: chromajs(colors['Yellow']).luminance(0.75),
-    color: chromajs(colors['Yellow']).darken(3)
+    backgroundColor: chromajs(colors.Yellow).luminance(0.75),
+    color: chromajs(colors.Yellow).darken(3)
   },
   danger: {
     backgroundColor: chromajs(colors['Status Error']).luminance(0.75),
@@ -51,6 +50,7 @@ const Alert = ({ children, type }: {
   </AlertView>;
 
 Alert.defaultProps = {
+  children: undefined,
   type: 'default'
 };
 
