@@ -8,7 +8,8 @@
     "watch": "skpm build --watch",
     "render": "skpm build --watch --run",
     "render:once": "skpm build --run",
-    "link-plugin": "skpm link"
+    "link-plugin": "skpm link",
+    "lint": "eslint ."
   },
   "author": "Jon Gold <jon.gold@airbnb.com>",
   "license": "MIT",
