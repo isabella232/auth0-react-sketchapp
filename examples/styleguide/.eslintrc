@@ -19,9 +19,12 @@
     "NSDate": true,
     "NSDataBase64EncodingEndLineWithCarriageReturn": true,
     "NSData": true,
-    "NSMakeRange": true,
+    "NSMakeRange": true
   },
   "env": {
     "node": true
+  },
+  "rules": {
+    "react/jsx-wrap-multilines": 0
   }
 }
