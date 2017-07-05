@@ -1,0 +1,27 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "auth0",
+    "@jongold/eslint-config-sketch",
+    "plugin:flowtype/recommended"
+  ],
+  "plugins": [
+    "flowtype"
+  ],
+  "globals": {
+    "React$Component": true,
+    "React$Element": true,
+    "ReactClass": true,
+    "ReactComponent": true,
+    "NSColor": true,
+    "MSJSONDataArchiver": true,
+    "NSAttributedString": true,
+    "NSDate": true,
+    "NSDataBase64EncodingEndLineWithCarriageReturn": true,
+    "NSData": true,
+    "NSMakeRange": true,
+  },
+  "env": {
+    "node": true
+  }
+}
