@@ -16,15 +16,15 @@ import TypeSpecimen from './components/TypeSpecimen';
 import Alert from './components/Alert';
 import Label from './components/Label';
 
-//To-do
-//Tables
-//Footer
-//Dropdown with avatar
-//Spinner
-//Alerts
-//UI switch
-//Breadcrumbs
-//Forms
+// ✅ To-do
+// Tables
+// Footer
+// Dropdown with avatar
+// Spinner
+// Alerts
+// UI switch
+// Breadcrumbs
+// Forms
 
 const Document = ({ system }: { system: DesignSystem }) => (
   <Artboard name="Basics" style={{padding: 100}}>
@@ -60,14 +60,17 @@ const Document = ({ system }: { system: DesignSystem }) => (
 
     <Section title="Header" description="Possible types of configurations for the Auth0 Header">
       <Header />
-      
+
       <Header mode="dark" bgColor={system.colors['BG Dark'].hex} />
       
       <Header subtitle="docs" bgColor='rgba(0,0,0,0.1)' />
       
       <Header 
         subtitle="Status"
-        items={['Link 1', 'Link 2']} 
+        items={[
+          { name: 'Link 1' },
+          { name: 'Link 2' },
+        ]} 
         appendButtons={{
           'Sign Up': {
             type: 'success'
