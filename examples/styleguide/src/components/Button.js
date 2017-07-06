@@ -1,9 +1,7 @@
 /* @flow */
-import React from 'react';
-import { StyleSheet } from 'react-sketchapp';
-import styled from 'styled-components/primitives';
-import _ from 'lodash';
-import { fonts, spacing, colors } from '../designSystem';
+import React from "react";
+import styled from "styled-components/primitives";
+import { fonts, spacing, colors } from "../designSystem";
 
 export const buttonSizes = {
   large: {
@@ -31,43 +29,37 @@ export const buttonStyles = {
   success: {
     backgroundColor: colors.Red,
     textStyles: {
-      color: 'white'
+      color: "white"
     }
   },
   primary: {
-    backgroundColor: colors['Light Blue'],
+    backgroundColor: colors["Light Blue"],
     textStyles: {
-      color: 'white'
+      color: "white"
     }
   },
   disabled: {
-    backgroundColor: '#CCCCCC',
+    backgroundColor: "#CCCCCC",
     textStyles: {
-      color: 'rgba(0,0,0,.26)'
+      color: "rgba(0,0,0,.26)"
     }
   },
   transparent: {
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
     borderWidth: 1,
-    borderColor: '#444'
+    borderColor: "#444"
   },
   link: {
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
     borderWidth: 1,
-    borderColor: '#444',
+    borderColor: "#444",
     textStyles: {
       letterSpacing: 0,
-      fontWeight: 'normal',
+      fontWeight: "normal",
       fontSize: fonts.Body.fontSize
     }
   }
 };
-
-const getTextStyles = (type: string, size: string) =>
-  Object.assign({},
-    _.get(buttonSizes, `${size}.textStyles`),
-    _.get(buttonStyles, `${type}.textStyles`)
-  );
 
 const ButtonView = styled.View`
   border-radius: 3px;
@@ -78,7 +70,7 @@ const ButtonView = styled.View`
 `;
 
 const ButtonText = styled.Text`
-  color: ${props => (props.invert ? 'white' : '')},
+  color: ${props => (props.invert ? "white" : "")};
 `;
 
 type ButtonType = {
@@ -90,26 +82,25 @@ type ButtonType = {
 };
 
 const Button = ({ name, type, size, invert, style }: ButtonType) =>
-  <ButtonView style={{
-    ...buttonStyles[type],
-    ...buttonSizes[size],
-    ...StyleSheet.flatten(style)
-  }}
+  <ButtonView
+    style={Object.assign({}, buttonStyles[type], buttonSizes[size], style)}
   >
     <ButtonText
       invert={invert}
-      style={{
-        ...fonts.SC,
-        ...getTextStyles(type, size)
-      }}
+      style={Object.assign(
+        {},
+        fonts.SC,
+        buttonSizes[size].textStyles,
+        buttonStyles[type].textStyles
+      )}
     >
-      {type === 'link' ? name : name.toUpperCase() }
+      {type === "link" ? name : name.toUpperCase()}
     </ButtonText>
   </ButtonView>;
 
 Button.defaultProps = {
-  type: 'success',
-  size: 'medium',
+  type: "success",
+  size: "medium",
   invert: false
 };
 
